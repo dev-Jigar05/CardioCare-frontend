@@ -81,7 +81,7 @@ function AssessRisk() {
       setLoading(true); // ✅ START loading
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/predict",
+        "https://cardiocare-backend-ifle.onrender.com/predict",
         payload
       );
 
@@ -275,3 +275,4 @@ function AssessRisk() {
 }
 
 export default AssessRisk;
+
