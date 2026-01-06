@@ -1,49 +1,105 @@
 import { Link } from "react-router-dom";
-import { HeartPulse } from "lucide-react";
+import { HeartPulse, Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { ModeToggle } from "@/components/mode-toggle";
+import { useState } from "react";
 
 function Navbar() {
-  return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b shadow-sm">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+  const [isOpen, setIsOpen] = useState(false);
 
+  const NavLinks = ({ mobile = false }) => (
+    <>
+      <Link
+        to="/assess"
+        className={`text-muted-foreground hover:text-primary transition-colors ${
+          mobile ? "text-lg py-2 font-medium" : "text-sm font-medium"
+        }`}
+        onClick={() => mobile && setIsOpen(false)}
+      >
+        Assess Risk
+      </Link>
+      <Link
+        to="/technical"
+        className={`text-muted-foreground hover:text-primary transition-colors ${
+          mobile ? "text-lg py-2 font-medium" : "text-sm font-medium"
+        }`}
+        onClick={() => mobile && setIsOpen(false)}
+      >
+        Technical
+      </Link>
+      <Link
+        to="/about"
+        className={`text-muted-foreground hover:text-primary transition-colors ${
+          mobile ? "text-lg py-2 font-medium" : "text-sm font-medium"
+        }`}
+        onClick={() => mobile && setIsOpen(false)}
+      >
+        About
+      </Link>
+      <Link
+        to="/faq"
+        className={`text-muted-foreground hover:text-primary transition-colors ${
+          mobile ? "text-lg py-2 font-medium" : "text-sm font-medium"
+        }`}
+        onClick={() => mobile && setIsOpen(false)}
+      >
+        FAQ
+      </Link>
+    </>
+  );
+
+  return (
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur border-b border-border shadow-sm">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition">
+        <Link
+          to="/"
+          className="flex items-center gap-2 hover:opacity-80 transition"
+        >
           <div className="p-2 rounded-lg bg-primary/10">
             <HeartPulse className="h-5 w-5 text-primary" />
           </div>
-          <span className="font-semibold text-lg tracking-tight">
+          <span className="font-semibold text-lg tracking-tight text-foreground">
             CardioCare
           </span>
         </Link>
 
-        {/* Links */}
-        <div className="flex gap-8 text-sm font-medium">
-          <Link
-            to="/assess"
-            className="text-slate-700 transition-colors hover:text-primary"
-          >
-            Assess Risk
-          </Link>
-          <Link
-            to="/technical"
-            className="text-slate-700 transition-colors hover:text-primary"
-          >
-            Technical
-          </Link>
-          <Link
-            to="/about"
-            className="text-slate-700 transition-colors hover:text-primary"
-          >
-            About
-          </Link>
-          <Link 
-            to="/faq"
-            className="text-slate-700 transition-colors hover:text-primary"
-          >
-            FAQ
-          </Link>
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-6">
+          <NavLinks />
+          <ModeToggle />
         </div>
 
+        {/* Mobile Menu */}
+        <div className="md:hidden flex items-center gap-4">
+          <ModeToggle />
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle className="flex items-center gap-2">
+                  <HeartPulse className="h-5 w-5 text-primary" />
+                  CardioCare
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-4 mt-8">
+                <NavLinks mobile />
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );

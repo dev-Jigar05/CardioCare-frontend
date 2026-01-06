@@ -1,23 +1,68 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { ArrowRight, Activity, ShieldCheck, Zap } from "lucide-react";
 
 function Hero() {
   const navigate = useNavigate();
 
   return (
-    <section className="text-center space-y-6 bg-secondary py-24 rounded-2xl">
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-primary">
-        Cardiovascular Risk Assessment
-      </h1>
+    <section className="relative overflow-hidden py-0 md:py-10">
 
-      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-        Estimate your heart disease risk using clinically guided machine learning
-        and interpretable health indicators.
-      </p>
 
-      <Button size="lg" className="transition-all duration-150 active:scale-95 active:opacity-90" onClick={() => navigate("/assess")}>
-        Assess Your Risk
-      </Button>
+      <div className="container relative mx-auto px-4 text-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary mb-8 animate-in fade-in slide-in-from-bottom-3 duration-700">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+          </span>
+          Next-Gen Health Analytics
+        </div>
+
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          Your Heart Health, <br className="hidden md:block" />
+          <span className="text-gradient">Powered by AI</span>
+        </h1>
+
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-100">
+          Estimate your cardiovascular risk with clinical precision. Our advanced machine learning model 
+          analyzes key health indicators to provide you with actionable insights.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+          <Button 
+            size="lg" 
+            className="w-full sm:w-auto text-base h-12 px-8 rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all hover:scale-105" 
+            onClick={() => navigate("/assess")}
+          >
+            Assess Your Risk
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="w-full sm:w-auto text-base h-12 px-8 rounded-full border-2 hover:bg-secondary/50 transition-all" 
+            onClick={() => navigate("/about")}
+          >
+            Learn How It Works
+          </Button>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+          {[
+            { icon: Activity, title: "Precision Analysis", text: "Driven by verified clinical datasets." },
+            { icon: ShieldCheck, title: "Privacy First", text: "Your health data never leaves your device." },
+            { icon: Zap, title: "Instant Results", text: "Get comprehensive insights in seconds." },
+          ].map((feature, i) => (
+            <div key={i} className="glass-card p-6 rounded-2xl text-left border border-white/20 dark:border-white/5">
+              <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                <feature.icon className="h-5 w-5" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+              <p className="text-sm text-muted-foreground">{feature.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

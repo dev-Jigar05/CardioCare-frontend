@@ -5,7 +5,7 @@ function FAQ() {
     <Layout>
       <h1 className="text-3xl font-bold">Frequently Asked Questions</h1>
 
-      <p className="mt-2 max-w-3xl text-slate-600">
+      <p className="mt-2 max-w-3xl text-muted-foreground">
         Answers to common questions about CardioCare and how the risk assessment
         works.
       </p>
@@ -17,7 +17,7 @@ function FAQ() {
           <h3 className="text-lg font-semibold">
             Is this a medical diagnosis?
           </h3>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-muted-foreground">
             No. CardioCare is an educational tool designed to estimate
             cardiovascular risk based on statistical patterns in data. It does
             not replace professional medical diagnosis or advice.
@@ -29,7 +29,7 @@ function FAQ() {
           <h3 className="text-lg font-semibold">
             How accurate are the predictions?
           </h3>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-muted-foreground">
             The predictions are based on a machine learning model trained on
             historical health data. While the model can identify general risk
             patterns, accuracy may vary across individuals and populations.
@@ -41,7 +41,7 @@ function FAQ() {
           <h3 className="text-lg font-semibold">
             What data is required for assessment?
           </h3>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-muted-foreground">
             The assessment uses basic demographic information, clinical
             measurements such as blood pressure, and lifestyle indicators like
             smoking or physical activity.
@@ -53,7 +53,7 @@ function FAQ() {
           <h3 className="text-lg font-semibold">
             Is my data stored or shared?
           </h3>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-muted-foreground">
             No. CardioCare does not store or share user data. All inputs are used
             only for generating the prediction during the current session.
           </p>
@@ -64,7 +64,7 @@ function FAQ() {
           <h3 className="text-lg font-semibold">
             Can this tool replace a doctor?
           </h3>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-muted-foreground">
             Absolutely not. This tool is intended to support awareness and
             education. Users should always consult qualified healthcare
             professionals for medical concerns.
@@ -76,7 +76,7 @@ function FAQ() {
           <h3 className="text-lg font-semibold">
             Why does the result include probability?
           </h3>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-muted-foreground">
             The probability reflects the model’s confidence based on input data.
             It helps users understand risk severity rather than relying only on
             a binary result.
