@@ -57,16 +57,14 @@ function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur border-b border-border shadow-sm">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between">
         {/* Logo */}
         <Link
           to="/"
           className="flex items-center gap-2 hover:opacity-80 transition"
         >
-          <div className="p-2 rounded-lg bg-primary/10">
-            <HeartPulse className="h-5 w-5 text-primary" />
-          </div>
-          <span className="font-semibold text-lg tracking-tight text-foreground">
+          <img src="/logo.png" alt="CardioCare Logo" className="h-14 w-14 object-contain" />
+          <span className="font-semibold text-2xl tracking-tight text-foreground">
             CardioCare
           </span>
         </Link>
@@ -90,7 +88,7 @@ function Navbar() {
             <SheetContent side="right">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
-                  <HeartPulse className="h-5 w-5 text-primary" />
+                  <img src="/logo.png" alt="CardioCare Logo" className="h-8 w-8 object-contain" />
                   CardioCare
                 </SheetTitle>
               </SheetHeader>
