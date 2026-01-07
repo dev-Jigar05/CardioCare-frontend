@@ -55,19 +55,19 @@ function FAQ() {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className={`group rounded-2xl border bg-card px-6 py-4 transition-all duration-200 ${
+            onClick={() => toggleFAQ(index)}
+            className={`group rounded-2xl border bg-card px-6 py-4 transition-all duration-200 cursor-pointer ${
               openIndex === index ? "shadow-md ring-1 ring-primary/20" : "hover:bg-accent/50"
             }`}
           >
-            <button
-              onClick={() => toggleFAQ(index)}
+            <div
               className="flex w-full items-center justify-between text-left"
             >
               <span className="text-lg font-medium pr-8">{faq.question}</span>
               <span className={`shrink-0 rounded-full bg-primary/10 p-2 text-primary transition-all duration-200 group-hover:bg-primary/20 ${openIndex === index ? "rotate-180 bg-primary/20" : ""}`}>
                 <ChevronDown className="h-4 w-4" />
               </span>
-            </button>
+            </div>
             <div
               className={`grid transition-all duration-200 ease-in-out ${
                 openIndex === index ? "grid-rows-[1fr] opacity-100 pt-4" : "grid-rows-[0fr] opacity-0"
