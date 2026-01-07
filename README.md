@@ -40,14 +40,14 @@
 ## 📸 Screenshots
 
 ### Landing Page
-![Landing Page](/screenshots/landing.png)
+![Landing Page](public/screenshots/landing.png)
 
 <br />
 
 ### Functionality
 | Risk Assessment Form | Analysis Result |
 |:---:|:---:|
-| ![Assessment Form](/screenshots/form.png) | ![Result Page](/screenshots/result.png) |
+| ![Assessment Form](public/screenshots/form.png) | ![Result Page](public/screenshots/result.png) |
 
 ---
 
