@@ -39,7 +39,15 @@
 
 ## 📸 Screenshots
 
-*(Add your screenshots here)*
+### Landing Page
+![Landing Page](/screenshots/landing.png)
+
+<br />
+
+### Functionality
+| Risk Assessment Form | Analysis Result |
+|:---:|:---:|
+| ![Assessment Form](/screenshots/form.png) | ![Result Page](/screenshots/result.png) |
 
 ---
 
