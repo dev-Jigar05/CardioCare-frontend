@@ -5,7 +5,7 @@ import Result from './pages/Result'
 import TechnicalDetails from './pages/TechnicalDetails'
 import About from './pages/About'
 import FAQ from "./pages/FAQ";
-
+import { Analytics } from "@vercel/analytics/react";
 
 
 
@@ -24,6 +24,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<FAQ />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   )
 }
