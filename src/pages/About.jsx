@@ -14,9 +14,8 @@ function About() {
       {/* Mission Grid */}
       <section className="grid md:grid-cols-2 gap-8 mb-16">
         <div className="rounded-2xl border bg-card p-6 shadow-sm hover:shadow-md transition-shadow">
-          <div className="h-16 w-16 mb-4">
-            <img src="/logo1.png" alt="CardioCare Logo" className="h-full w-full object-contain dark:hidden" />
-            <img src="/logo-dark1.png" alt="CardioCare Logo" className="hidden h-full w-full object-contain dark:block" />
+          <div className="h-12 w-12 mb-4">
+            <img src="/logo.png" alt="CardioCare Logo" className="h-full w-full object-contain" />
           </div>
           <h2 className="text-xl font-semibold mb-2">What is CardioCare?</h2>
           <p className="text-muted-foreground leading-relaxed">
