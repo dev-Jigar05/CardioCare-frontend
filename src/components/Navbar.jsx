@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HeartPulse, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,48 +10,49 @@ import {
 } from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/mode-toggle";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const links = [
+    { path: "/assess", label: "Assess Risk" },
+    { path: "/technical", label: "Technical" },
+    { path: "/about", label: "About" },
+    { path: "/faq", label: "FAQ" },
+  ];
 
   const NavLinks = ({ mobile = false }) => (
     <>
-      <Link
-        to="/assess"
-        className={`text-muted-foreground hover:text-primary transition-colors ${
-          mobile ? "text-lg py-2 font-medium" : "text-sm font-medium"
-        }`}
-        onClick={() => mobile && setIsOpen(false)}
-      >
-        Assess Risk
-      </Link>
-      <Link
-        to="/technical"
-        className={`text-muted-foreground hover:text-primary transition-colors ${
-          mobile ? "text-lg py-2 font-medium" : "text-sm font-medium"
-        }`}
-        onClick={() => mobile && setIsOpen(false)}
-      >
-        Technical
-      </Link>
-      <Link
-        to="/about"
-        className={`text-muted-foreground hover:text-primary transition-colors ${
-          mobile ? "text-lg py-2 font-medium" : "text-sm font-medium"
-        }`}
-        onClick={() => mobile && setIsOpen(false)}
-      >
-        About
-      </Link>
-      <Link
-        to="/faq"
-        className={`text-muted-foreground hover:text-primary transition-colors ${
-          mobile ? "text-lg py-2 font-medium" : "text-sm font-medium"
-        }`}
-        onClick={() => mobile && setIsOpen(false)}
-      >
-        FAQ
-      </Link>
+      {links.map((link) => {
+        const isActive = location.pathname === link.path;
+        return (
+          <Link
+            key={link.path}
+            to={link.path}
+            className={`relative px-4 py-2 transition-colors duration-200 ${
+              isActive ? "text-primary font-medium" : "text-muted-foreground font-medium hover:text-primary"
+            } ${mobile ? "text-lg w-full text-center" : "text-sm"}`}
+            onClick={() => mobile && setIsOpen(false)}
+          >
+            {isActive && !mobile && (
+              <motion.span
+                layoutId="activeNav"
+                className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full"
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              />
+            )}
+            {/* Mobile specific active background (no sliding animation usually better for lists, or consistent) 
+                For mobile let's just use simple background class if active for simplicity/performance 
+             */}
+            {isActive && mobile && (
+               <span className="absolute inset-0 bg-primary/10 rounded-lg -z-10" />
+            )}
+            {link.label}
+          </Link>
+        );
+      })}
     </>
   );
 

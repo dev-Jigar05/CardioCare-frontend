@@ -6,7 +6,7 @@ function Hero() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative overflow-hidden py-0 md:py-10">
+    <section className="relative overflow-hidden py-8 md:py-12">
 
 
       <div className="container relative mx-auto px-4 text-center">

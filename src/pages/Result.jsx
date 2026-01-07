@@ -158,26 +158,44 @@ function Result() {
                 </p>
             )}
 
-            {/* Severity Bar */}
+            {/* Circular Risk Indicator */}
             {riskPercent !== null && (
-                <div className="w-full max-w-md">
-                <div className="flex justify-between text-sm text-muted-foreground mb-2">
-                    <span>Low</span>
-                    <span>High</span>
+              <div className="relative flex items-center justify-center p-4">
+                {/* Outer Ring */}
+                <svg className="h-48 w-48 -rotate-90 transform">
+                  <circle
+                    className="text-secondary"
+                    strokeWidth="12"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="90"
+                    cx="96"
+                    cy="96"
+                  />
+                  <circle
+                    className={`${getRiskColor(riskPercent)} transition-all duration-1000 ease-out`}
+                    strokeWidth="12"
+                    strokeDasharray={2 * Math.PI * 90}
+                    strokeDashoffset={2 * Math.PI * 90 * (1 - riskPercent / 100)}
+                    strokeLinecap="round"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="90"
+                    cx="96"
+                    cy="96"
+                  />
+                </svg>
+                
+                {/* Center Content */}
+                <div className="absolute flex flex-col items-center">
+                  <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                    Risk Score
+                  </span>
+                  <span className="text-5xl font-extrabold tracking-tighter">
+                    {riskPercent}%
+                  </span>
                 </div>
-
-                <div className="h-3 w-full rounded-full bg-secondary overflow-hidden">
-                    <div
-                    className={`h-full ${getRiskColor(riskPercent)} transition-all duration-1000 ease-out`}
-                    style={{ width: `${riskPercent}%` }}
-                    />
-                </div>
-
-                <p className="mt-2 text-sm text-muted-foreground">
-                    Risk severity:{" "}
-                    <span className="font-medium text-foreground">{riskPercent}%</span>
-                </p>
-                </div>
+              </div>
             )}
 
             {/* Interpretation */}

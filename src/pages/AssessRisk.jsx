@@ -113,7 +113,7 @@ function AssessRisk() {
            </p>
         </div>
 
-        <Card className="glass-card shadow-xl border-t-4 border-t-primary">
+        <Card className="bg-card shadow-xl border">
           <CardHeader className="bg-muted/20 pb-8">
              <CardTitle className="text-xl">Patient Information</CardTitle>
              <CardDescription>Enter values accurately for the best results.</CardDescription>

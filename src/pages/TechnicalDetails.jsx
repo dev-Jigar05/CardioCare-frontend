@@ -10,7 +10,7 @@ function TechnicalDetails() {
   return (
     <Layout>
       {/* Header Section */}
-      <div className="relative mb-16 rounded-3xl bg-gradient-to-br from-primary/5 via-primary/10 to-transparent p-10 text-center dark:from-primary/10 dark:via-primary/5">
+      <div className="relative mb-16 rounded-3xl bg-gradient-to-br from-primary/5 via-primary/10 to-transparent p-10 text-center dark:from-primary/10 dark:via-primary/5 animate-in fade-in slide-in-from-bottom-6 duration-700">
         <div className="mx-auto max-w-2xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/50 px-3 py-1 text-xs font-medium text-primary shadow-sm backdrop-blur-sm">
             <Activity className="h-3 w-3" />
