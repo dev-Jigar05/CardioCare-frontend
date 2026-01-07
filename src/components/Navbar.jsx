@@ -90,8 +90,8 @@ function Navbar() {
             <SheetContent side="right">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
-                  <img src="/logo.png" alt="CardioCare Logo" className="h-8 w-8 object-contain dark:hidden" />
-                  <img src="/logo-dark.png" alt="CardioCare Logo" className="hidden h-8 w-8 object-contain dark:block" />
+                  <img src="/logo1.png?v=2" alt="CardioCare Logo" className="h-8 w-8 object-contain dark:hidden" />
+                  <img src="/logo-dark1.png?v=2" alt="CardioCare Logo" className="hidden h-8 w-8 object-contain dark:block" />
                   CardioCare
                 </SheetTitle>
               </SheetHeader>
