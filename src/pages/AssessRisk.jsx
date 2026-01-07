@@ -225,7 +225,7 @@ function AssessRisk() {
                     </div>
                 </FormSection>
 
-                <div className="pt-6">
+                <div className="pt-6 space-y-4">
                     <Button type="submit" size="lg" disabled={loading} className="w-full text-base h-12 shadow-lg hover:shadow-primary/25 transition-all hover:scale-[1.01]">
                         {loading ? (
                         <>
@@ -236,6 +236,12 @@ function AssessRisk() {
                         "Generate Risk Analysis"
                         )}
                     </Button>
+                    
+                    {loading && (
+                      <p className="text-sm text-center text-muted-foreground animate-pulse">
+                        Note: The server may take up to 1 minute to wake up. Please don't close this tab.
+                      </p>
+                    )}
                 </div>
             </form>
           </CardContent>
