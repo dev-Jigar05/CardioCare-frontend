@@ -5,6 +5,7 @@ import Result from './pages/Result'
 import TechnicalDetails from './pages/TechnicalDetails'
 import About from './pages/About'
 import FAQ from "./pages/FAQ";
+import NotFound from "./pages/NotFound";
 import { Analytics } from "@vercel/analytics/react";
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/technical" element={<TechnicalDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Analytics />
     </BrowserRouter>
