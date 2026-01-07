@@ -1,16 +1,67 @@
-# React + Vite
+# CardioCare ❤️
+### AI-Powered Heart Disease Risk Assessment System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=blue)
 
-Currently, two official plugins are available:
+**CardioCare** is a modern, responsive web application designed to bridge the gap between advanced machine learning and daily health awareness. It allows users to estimate their cardiovascular risk profile instantly using a clinical-grade AI model.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **🤖 Real-Time AI Analysis**: Integrates with a Python-based backend (KNN Model) to provide instant risk assessments based on 12 key health indicators.
+*   **📊 Interactive Data Visualization**: Features dynamic graphs and charts to explain medical data and risk factors clearly.
+*   **🎨 Premium UI/UX**: Built with **Shadcn/UI** and **Tailwind CSS**, offering a sleek, glassmorphism-inspired design with smooth **Framer Motion** animations.
+*   **📱 Fully Responsive**: Optimized for all devices, from desktop monitors to mobile phones, with a native-app-like feel.
+*   **🌙 Dark Mode Support**: seamless theme switching for comfortable viewing in any environment.
+*   **📄 PDF Reports**: Users can generate and download a detailed medical report of their assessment.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Technology Stack
+
+### Frontend
+*   **Framework**: React.js (Vite)
+*   **Styling**: Tailwind CSS
+*   **Components**: Shadcn/UI, Lucide React (Icons)
+*   **Animations**: Framer Motion
+*   **Routing**: React Router DOM
+
+### Backend (Integrated)
+*   **Model**: K-Nearest Neighbors (KNN)
+*   **Training Data**: 70,000+ Clinical Patient Records
+*   **API**: RESTful endpoint hosted on Render
+
+---
+
+## 📸 Screenshots
+
+*(Add your screenshots here)*
+
+---
+
+## 🏃‍♂️ Getting Started
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/dev-Jigar05/CardioCare-frontend.git
+    cd CardioCare-frontend
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server**
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## ⚕️ Disclaimer
+*CardioCare is an educational tool based on statistical patterns. It is not a diagnostic device. Always consult a healthcare professional for medical advice.*

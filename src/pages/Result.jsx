@@ -36,7 +36,7 @@ function Result() {
     );
   }
 
-  const { risk, probability } = state;
+  const { risk, probability, formData } = state;
   const isHighRisk = risk === 1;
 
   // ---------------- Severity helpers ----------------
@@ -47,6 +47,17 @@ function Result() {
     if (percent < 30) return "bg-green-500";
     if (percent < 60) return "bg-yellow-500";
     return "bg-red-500";
+  }
+
+  // ---------------- Formatter helpers ----------------
+  function formatGender(val) { return Number(val) === 1 ? "Male" : "Female"; }
+  function formatYesNo(val) { return Number(val) === 1 ? "Yes" : "No"; }
+  function formatActive(val) { return Number(val) === 1 ? "Active" : "Inactive"; }
+  function formatLevel(val) {
+    const v = Number(val);
+    if (v === 1) return "Normal";
+    if (v === 2) return "Above Normal";
+    return "Well Above Normal";
   }
 
   // ---------------- Personalized tips ----------------
@@ -87,28 +98,58 @@ function Result() {
 
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
-    doc.text(
-      `Risk Level: ${isHighRisk ? "High Risk" : "Low Risk"}`,
-      14,
-      35
-    );
-
+    
+    // Result Section
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 14, 30);
+    doc.text(`Risk Level: ${isHighRisk ? "High Risk" : "Low Risk"}`, 14, 40);
     if (riskPercent !== null) {
-      doc.text(`Estimated Probability: ${riskPercent}%`, 14, 45);
+      doc.text(`Estimated Probability: ${riskPercent}%`, 14, 50);
     }
 
-    doc.text("Summary:", 14, 60);
+    // Patient Details Section
+    if (formData) {
+        doc.setFont("helvetica", "bold");
+        doc.text("Patient Details:", 14, 65);
+        doc.setFont("helvetica", "normal");
+        
+        const details = [
+            `Age: ${formData.age} years`,
+            `Gender: ${formatGender(formData.gender)}`,
+            `Height: ${formData.height} cm`,
+            `Weight: ${formData.weight} kg`,
+            `Blood Pressure: ${formData.ap_hi}/${formData.ap_lo} mmHg`,
+            `Cholesterol: ${formatLevel(formData.cholesterol)}`,
+            `Glucose: ${formatLevel(formData.gluc)}`,
+            `Smoker: ${formatYesNo(formData.smoke)}`,
+            `Alcohol Intake: ${formatYesNo(formData.alco)}`,
+            `Physical Activity: ${formatActive(formData.active)}`,
+        ];
+
+        let dy = 75;
+        // Print in 2 columns
+        details.forEach((item, i) => {
+            const x = i % 2 === 0 ? 14 : 110;
+            const y = dy + Math.floor(i / 2) * 8;
+            doc.text(item, x, y);
+        });
+    }
+
+    doc.setFont("helvetica", "bold");
+    doc.text("Summary:", 14, 130);
+    doc.setFont("helvetica", "normal");
 
     const summaryText = isHighRisk
       ? "This assessment indicates an elevated cardiovascular risk. This is not a diagnosis, but lifestyle changes and professional medical consultation are recommended."
       : "This assessment indicates a lower cardiovascular risk. Maintaining a healthy lifestyle is advised.";
 
-    doc.text(summaryText, 14, 70, { maxWidth: 180 });
+    doc.text(summaryText, 14, 140, { maxWidth: 180 });
 
-    doc.text("Recommended Actions:", 14, 100);
+    doc.setFont("helvetica", "bold");
+    doc.text("Recommended Actions:", 14, 160);
+    doc.setFont("helvetica", "normal");
 
     const tips = getTips(risk, riskPercent);
-    let y = 110;
+    let y = 170;
     tips.forEach((tip) => {
       doc.text(`• ${tip}`, 14, y, { maxWidth: 180 });
       y += 8;
@@ -205,6 +246,26 @@ function Result() {
                 : "Your inputs indicate a lower cardiovascular risk. Maintaining a healthy lifestyle and regular check-ups are recommended."}
             </p>
 
+            {/* Patient Data Summary */}
+            {formData && (
+              <div className="w-full max-w-xl bg-muted/30 p-6 rounded-xl border border-border/50 text-left">
+                 <h3 className="mb-4 font-semibold text-foreground flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    Input Summary
+                 </h3>
+                 <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
+                    <div className="text-muted-foreground">Age: <span className="text-foreground font-medium">{formData.age}</span></div>
+                    <div className="text-muted-foreground">Gender: <span className="text-foreground font-medium">{formatGender(formData.gender)}</span></div>
+                    <div className="text-muted-foreground">BP: <span className="text-foreground font-medium">{formData.ap_hi}/{formData.ap_lo}</span></div>
+                    <div className="text-muted-foreground">BMI High: <span className="text-foreground font-medium">{Number(formData.weight) > 90 ? "Yes" : "No"}</span></div>
+                    <div className="text-muted-foreground">Cholesterol: <span className="text-foreground font-medium">{formatLevel(formData.cholesterol)}</span></div>
+                    <div className="text-muted-foreground">Glucose: <span className="text-foreground font-medium">{formatLevel(formData.gluc)}</span></div>
+                    <div className="text-muted-foreground">Smoker: <span className="text-foreground font-medium">{formatYesNo(formData.smoke)}</span></div>
+                    <div className="text-muted-foreground">Active: <span className="text-foreground font-medium">{formatActive(formData.active)}</span></div>
+                 </div>
+              </div>
+            )}
+
             {/* Personalized Tips */}
             <div className="w-full max-w-xl text-left bg-muted/50 p-6 rounded-xl">
                 <h3 className="mb-4 font-semibold text-foreground">
@@ -239,7 +300,7 @@ function Result() {
 
             <Button
                 variant="default"
-                onClick={() => navigate("/assess")}
+                onClick={() => navigate("/assess", { state: { formData: state.formData } })}
                 className="w-full sm:w-auto"
             >
                 Recalculate

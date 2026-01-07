@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Layout from "../components/Layout";
 import { Button } from "@/components/ui/button";
@@ -30,9 +30,10 @@ const FormSection = ({ title, icon: Icon, children }) => (
 );
 
 function AssessRisk() {
+  const location = useLocation(); // Add useLocation hook
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState(location.state?.formData || {
     age: "", gender: "",
     height: "", weight: "",
     ap_hi: "", ap_lo: "",
@@ -90,7 +91,8 @@ function AssessRisk() {
     try {
       setLoading(true);
       const response = await axios.post("https://cardiocare-backend-ifle.onrender.com/predict", payload);
-      navigate("/result", { state: response.data });
+      // Pass both result data and original form data
+      navigate("/result", { state: { ...response.data, formData } }); 
     } catch (error) {
       alert("Failed to get prediction. Please try again.");
     } finally {
