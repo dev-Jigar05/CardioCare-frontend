@@ -64,7 +64,7 @@ function Navbar() {
           to="/"
           className="flex items-center gap-2 hover:opacity-80 transition"
         >
-          <img src="/logo.png" alt="CardioCare Logo" className="h-10 w-10 object-contain" />
+          <img src="/logo.png" alt="CardioCare Logo" className="h-7 w-7 object-contain" />
           <span className="font-semibold text-2xl tracking-tight text-foreground">
             CardioCare
           </span>
@@ -89,7 +89,7 @@ function Navbar() {
             <SheetContent side="right">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
-                  <img src="/logo.png" alt="CardioCare Logo" className="h-8 w-8 object-contain" />
+                  <img src="/logo.png" alt="CardioCare Logo" className="h-6 w-6 object-contain" />
                   CardioCare
                 </SheetTitle>
               </SheetHeader>

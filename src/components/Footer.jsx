@@ -9,7 +9,7 @@ function Footer() {
         {/* Column 1: Brand */}
         <div className="space-y-4">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="CardioCare Logo" className="h-12 w-12 object-contain" />
+            <img src="/logo.png" alt="CardioCare Logo" className="h-7 w-7 object-contain" />
             <span className="font-bold text-2xl tracking-tight text-foreground">
               CardioCare
             </span>

@@ -1,4 +1,4 @@
-function Logo({ className = "h-8 w-8", ...props }) {
+function Logo({ className = "h-6 w-6", ...props }) {
   return (
     <img 
       src="/logo.png" 
