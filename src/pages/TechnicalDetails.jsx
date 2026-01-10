@@ -3,8 +3,9 @@ import {
   AgeDistributionChart,
   TargetDistributionChart,
   FeatureImportanceChart,
+  ModelComparisonChart,
 } from "../components/TechCharts";
-import { Database, BrainCircuit, Activity, FileCheck } from "lucide-react";
+import { FaDatabase, FaBrain, FaHeartbeat, FaClipboardCheck } from "react-icons/fa";
 
 function TechnicalDetails() {
   return (
@@ -12,10 +13,7 @@ function TechnicalDetails() {
       {/* Header Section */}
       <div className="relative mb-16 rounded-3xl bg-gradient-to-br from-primary/5 via-primary/10 to-transparent p-10 text-center dark:from-primary/10 dark:via-primary/5 animate-in fade-in slide-in-from-bottom-6 duration-700">
         <div className="mx-auto max-w-2xl">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/50 px-3 py-1 text-xs font-medium text-primary shadow-sm backdrop-blur-sm">
-            <Activity className="h-3 w-3" />
-            <span>Model Version 1.0.0 KNN</span>
-          </div>
+
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
             Technical Architecture
           </h1>
@@ -28,10 +26,10 @@ function TechnicalDetails() {
       {/* Quick Stats Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {[
-          { icon: Database, label: "Dataset Size", value: "70,000 Samples", sub: "Cardio Train Dataset" },
-          { icon: BrainCircuit, label: "Model Type", value: "K-Nearest Neighbors", sub: "Scikit-Learn" },
-          { icon: FileCheck, label: "Accuracy", value: "~70%", sub: "Test Set" },
-          { icon: Activity, label: "Features", value: "12 Inputs", sub: "Clinical & Vitals" },
+          { icon: FaDatabase, label: "Dataset Size", value: "70,000 Samples", sub: "Cardio Train Dataset" },
+          { icon: FaBrain, label: "Model Type", value: "XGBoost Classifier", sub: "Gradient Boosting" },
+          { icon: FaClipboardCheck, label: "Accuracy", value: "~73%", sub: "Test Set" },
+          { icon: FaHeartbeat, label: "Features", value: "12 Inputs", sub: "Clinical & Vitals" },
         ].map((stat, i) => (
           <div key={i} className="rounded-2xl border bg-card p-6 shadow-sm transition-all hover:shadow-md">
             <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 p-3 text-primary">
@@ -75,9 +73,9 @@ function TechnicalDetails() {
           <div className="space-y-2">
             <h2 className="text-2xl font-bold">Model Architecture</h2>
             <p className="text-muted-foreground">
-              Our core engine is a <strong>K-Nearest Neighbors (KNN) Classifier</strong>. 
-              Simpler yet robust for this specific feature set, it classifies patients based on the similarity 
-              of their vitals to known cases in the 70,000-sample database.
+              Our core engine is a <strong>XGBoost Classifier</strong>. 
+              A powerful gradient boosting framework that builds an ensemble of decision trees 
+              to capture complex non-linear relationships in the 70,000-sample database.
             </p>
           </div>
 
@@ -104,25 +102,53 @@ function TechnicalDetails() {
             <li>
               <strong className="text-foreground">Feature Engineering:</strong> Calculating <strong>BMI</strong> from Height and Weight.
             </li>
-            <li>
-              <strong className="text-foreground">Scaling:</strong> Standard Scaling applied to all Features to normalize range for KNN distance calculation.
-            </li>
           </ol>
         </div>
+
+
       </section>
       </div>
+
+      {/* Model Comparison Section */}
+      <section className="mt-12 mb-20">
+        <h2 className="text-2xl font-bold mb-6">Model Experimentation</h2>
+        <div className="rounded-2xl border bg-card p-8 shadow-sm grid md:grid-cols-2 gap-12 items-center">
+          <div>
+              <h3 className="text-lg font-semibold mb-3">Why XGBoost?</h3>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+              We rigorously tested 5 different algorithms. While Decision Trees and Logistic Regression performed well, 
+              <strong> XGBoost</strong> provided the best balance of accuracy (73.3%) and generalizability (AUC 0.80).
+              </p>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex items-center gap-3">
+                    <span className="h-2 w-2 rounded-full bg-primary" />
+                    Higher AUC score indicating better separation of classes.
+                </li>
+                <li className="flex items-center gap-3">
+                    <span className="h-2 w-2 rounded-full bg-primary" />
+                    Robust handling of outliers in blood pressure data.
+                </li>
+              </ul>
+          </div>
+          <div>
+              <h3 className="mb-6 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              Model Accuracy Comparison
+            </h3>
+            <ModelComparisonChart />
+          </div>
+        </div>
+      </section>
 
       {/* Model Performance Metrics */}
       <section className="mt-20 mb-10">
         <h2 className="mb-8 text-2xl font-bold">Performance Matrix</h2>
         <div className="grid gap-6 sm:grid-cols-3">
           {[
-            { metric: "Precision", val: "~71%", desc: "Reliability of positive predictions" },
-            { metric: "Recall", val: "~69%", desc: "Ability to detect actual cases" },
-            { metric: "F1-Score", val: "~70%", desc: "Harmonic mean of precision/recall" },
+            { metric: "Precision", val: "~74%", desc: "Reliability of positive predictions" },
+            { metric: "Recall", val: "~72%", desc: "Ability to detect actual cases" },
+            { metric: "ROC AUC", val: "~0.80", desc: "Model discriminative ability" },
           ].map((m, i) => (
-            <div key={i} className="group relative overflow-hidden rounded-xl border bg-card p-6 transition-all hover:border-primary/50">
-              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-primary/5 transition-all group-hover:bg-primary/10"></div>
+            <div key={i} className="group relative overflow-hidden rounded-xl border bg-card p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/50">
               <p className="text-sm font-medium text-muted-foreground">{m.metric}</p>
               <p className="mt-2 text-4xl font-bold text-foreground">{m.val}</p>
               <p className="mt-2 text-xs text-muted-foreground">{m.desc}</p>

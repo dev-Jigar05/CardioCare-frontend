@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { HeartPulse, Menu } from "lucide-react";
+import { FaBars } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -82,7 +82,7 @@ function Navbar() {
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-6 w-6" />
+                <FaBars className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>

@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import { HeartPulse, Target, AlertCircle, Brain, Shield, Info } from "lucide-react";
+import { FaHeartbeat, FaBullseye, FaExclamationCircle, FaBrain, FaShieldAlt, FaInfoCircle } from "react-icons/fa";
 
 function About() {
   return (
@@ -26,7 +26,7 @@ function About() {
 
         <div className="rounded-2xl border bg-card p-6 shadow-sm hover:shadow-md transition-shadow">
            <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
-            <Target className="h-6 w-6" />
+            <FaBullseye className="h-6 w-6" />
           </div>
           <h2 className="text-xl font-semibold mb-2">Our Goal</h2>
           <p className="text-muted-foreground leading-relaxed">
@@ -41,9 +41,9 @@ function About() {
         <h2 className="text-2xl font-bold text-center mb-8">Why This Matters</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           {[
-            { icon: AlertCircle, title: "Early Detection", text: "Identifying risks early can significantly improve long-term outcomes." },
-            { icon: Brain, title: "AI Precision", text: "Leveraging 70,000+ records to find patterns invisible to the human eye." },
-            { icon: Shield, title: "Privacy First", text: "Your health data is processed securely and never stored without consent." },
+            { icon: FaExclamationCircle, title: "Early Detection", text: "Identifying risks early can significantly improve long-term outcomes." },
+            { icon: FaBrain, title: "AI Precision", text: "Leveraging 70,000+ records to find patterns invisible to the human eye." },
+            { icon: FaShieldAlt, title: "Privacy First", text: "Your health data is processed securely and never stored without consent." },
           ].map((item, i) => (
             <div key={i} className="flex flex-col items-center text-center p-4">
               <div className="mb-3 rounded-full bg-secondary p-3 text-secondary-foreground">
@@ -58,7 +58,7 @@ function About() {
 
       {/* Disclaimer */}
       <div className="rounded-xl border border-amber-200 bg-amber-50 dark:bg-amber-950/30 dark:border-amber-900 mx-auto max-w-3xl p-4 flex gap-4 items-start">
-        <Info className="h-5 w-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+        <FaInfoCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
         <div className="space-y-1">
           <h3 className="font-semibold text-amber-900 dark:text-amber-200">Medical Disclaimer</h3>
            <p className="text-sm text-amber-800/90 dark:text-amber-300/80 leading-relaxed">

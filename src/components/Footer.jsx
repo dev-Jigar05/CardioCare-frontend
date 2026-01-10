@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { HeartPulse, Github } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -48,7 +48,7 @@ function Footer() {
                 rel="noreferrer"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
              >
-                <Github className="h-4 w-4" />
+                <FaGithub className="h-4 w-4" />
                 <span>View on GitHub</span>
              </a>
              <p className="text-sm text-muted-foreground/80">

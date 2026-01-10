@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
-import { ChevronDown, MessageCircle, HelpCircle } from "lucide-react";
+import { FaChevronDown } from "react-icons/fa";
 
 const faqs = [
   {
@@ -65,7 +65,7 @@ function FAQ() {
             >
               <span className="text-lg font-medium pr-8">{faq.question}</span>
               <span className={`shrink-0 rounded-full bg-primary/10 p-2 text-primary transition-all duration-200 group-hover:bg-primary/20 ${openIndex === index ? "rotate-180 bg-primary/20" : ""}`}>
-                <ChevronDown className="h-4 w-4" />
+                <FaChevronDown className="h-4 w-4" />
               </span>
             </div>
             <div

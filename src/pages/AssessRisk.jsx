@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Loader2, Activity, User, Ruler, Flame } from "lucide-react";
+import { FaSpinner, FaHeartbeat, FaUser, FaRuler, FaFire } from "react-icons/fa";
 
 const FormSection = ({ title, icon: Icon, children }) => (
   <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -107,7 +107,7 @@ function AssessRisk() {
       <div className="max-w-4xl mx-auto py-8">
         <div className="text-center mb-12 space-y-4 animate-in fade-in zoom-in-95 duration-700">
            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-primary/5 text-primary mb-4">
-              <Activity className="h-8 w-8" />
+              <FaHeartbeat className="h-8 w-8" />
            </div>
            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Assess Your Risk</h1>
            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
@@ -124,7 +124,7 @@ function AssessRisk() {
             <form onSubmit={handleSubmit} className="space-y-10">
                 
                 {/* Personal Details */}
-                <FormSection title="Personal Details" icon={User}>
+                <FormSection title="Personal Details" icon={FaUser}>
                     <div className="space-y-2">
                         <Label htmlFor="age">Age (years)</Label>
                         <Input id="age" name="age" type="number" placeholder="45" value={formData.age} onChange={handleChange} className={errors.age ? "border-destructive ring-destructive/20" : ""} />
@@ -146,7 +146,7 @@ function AssessRisk() {
                 </FormSection>
 
                 {/* Vitals */}
-                <FormSection title="Body Metrics" icon={Ruler}>
+                <FormSection title="Body Metrics" icon={FaRuler}>
                     <div className="space-y-2">
                         <Label htmlFor="height">Height (cm)</Label>
                         <Input id="height" name="height" type="number" placeholder="175" value={formData.height} onChange={handleChange} className={errors.height ? "border-destructive ring-destructive/20" : ""} />
@@ -170,7 +170,7 @@ function AssessRisk() {
                 </FormSection>
 
                 {/* Lab Results & Lifestyle */}
-                <FormSection title="Labs & Lifestyle" icon={Flame}>
+                <FormSection title="Labs & Lifestyle" icon={FaFire}>
                      <div className="space-y-2">
                         <Label htmlFor="cholesterol">Cholesterol Level</Label>
                         <Select name="cholesterol" value={formData.cholesterol} onValueChange={(val) => handleSelectChange("cholesterol", val)}>
@@ -229,7 +229,7 @@ function AssessRisk() {
                     <Button type="submit" size="lg" disabled={loading} className="w-full text-base h-12 shadow-lg hover:shadow-primary/25 transition-all hover:scale-[1.01]">
                         {loading ? (
                         <>
-                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                            <FaSpinner className="mr-2 h-5 w-5 animate-spin" />
                             Processing Analysis...
                         </>
                         ) : (
