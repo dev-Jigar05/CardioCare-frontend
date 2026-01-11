@@ -45,7 +45,10 @@ function AssessRisk() {
   const [loading, setLoading] = useState(false);
 
   function handleChange(e) {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
+    // Prevent negative inputs
+    if (type === "number" && value !== "" && Number(value) < 0) return;
+
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: null }));
   }
@@ -127,7 +130,7 @@ function AssessRisk() {
                 <FormSection title="Personal Details" icon={FaUser}>
                     <div className="space-y-2">
                         <Label htmlFor="age">Age (years)</Label>
-                        <Input id="age" name="age" type="number" placeholder="45" value={formData.age} onChange={handleChange} className={errors.age ? "border-destructive ring-destructive/20" : ""} />
+                        <Input id="age" name="age" type="number" min="0" placeholder="45" value={formData.age} onChange={handleChange} className={errors.age ? "border-destructive ring-destructive/20" : ""} />
                         {errors.age && <p className="error">{errors.age}</p>}
                     </div>
                     <div className="space-y-2">
@@ -149,22 +152,22 @@ function AssessRisk() {
                 <FormSection title="Body Metrics" icon={FaRuler}>
                     <div className="space-y-2">
                         <Label htmlFor="height">Height (cm)</Label>
-                        <Input id="height" name="height" type="number" placeholder="175" value={formData.height} onChange={handleChange} className={errors.height ? "border-destructive ring-destructive/20" : ""} />
+                        <Input id="height" name="height" type="number" min="0" placeholder="175" value={formData.height} onChange={handleChange} className={errors.height ? "border-destructive ring-destructive/20" : ""} />
                         {errors.height && <p className="error">{errors.height}</p>}
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="weight">Weight (kg)</Label>
-                        <Input id="weight" name="weight" type="number" placeholder="75" value={formData.weight} onChange={handleChange} className={errors.weight ? "border-destructive ring-destructive/20" : ""} />
+                        <Input id="weight" name="weight" type="number" min="0" placeholder="75" value={formData.weight} onChange={handleChange} className={errors.weight ? "border-destructive ring-destructive/20" : ""} />
                         {errors.weight && <p className="error">{errors.weight}</p>}
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="ap_hi">Systolic BP (mmHg)</Label>
-                        <Input id="ap_hi" name="ap_hi" type="number" placeholder="120" value={formData.ap_hi} onChange={handleChange} className={errors.ap_hi ? "border-destructive ring-destructive/20" : ""} />
+                        <Input id="ap_hi" name="ap_hi" type="number" min="0" placeholder="120" value={formData.ap_hi} onChange={handleChange} className={errors.ap_hi ? "border-destructive ring-destructive/20" : ""} />
                         {errors.ap_hi && <p className="error">{errors.ap_hi}</p>}
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="ap_lo">Diastolic BP (mmHg)</Label>
-                        <Input id="ap_lo" name="ap_lo" type="number" placeholder="80" value={formData.ap_lo} onChange={handleChange} className={errors.ap_lo ? "border-destructive ring-destructive/20" : ""} />
+                        <Input id="ap_lo" name="ap_lo" type="number" min="0" placeholder="80" value={formData.ap_lo} onChange={handleChange} className={errors.ap_lo ? "border-destructive ring-destructive/20" : ""} />
                         {errors.ap_lo && <p className="error">{errors.ap_lo}</p>}
                     </div>
                 </FormSection>
