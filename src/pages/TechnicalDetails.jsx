@@ -11,27 +11,27 @@ function TechnicalDetails() {
   return (
     <Layout>
       {/* Header Section */}
-      <div className="relative mb-16 rounded-3xl bg-gradient-to-br from-primary/5 via-primary/10 to-transparent p-10 text-center dark:from-primary/10 dark:via-primary/5 animate-in fade-in slide-in-from-bottom-6 duration-700">
+      <div className="relative mb-10 md:mb-16 rounded-3xl bg-gradient-to-br from-primary/5 via-primary/10 to-transparent p-6 md:p-10 text-center dark:from-primary/10 dark:via-primary/5 animate-in fade-in slide-in-from-bottom-6 duration-700">
         <div className="mx-auto max-w-2xl">
 
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <h1 className="mb-4 text-3xl md:text-4xl font-extrabold tracking-tight sm:text-5xl">
             Technical Architecture
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base md:text-lg text-muted-foreground">
             A deep dive into the data, model architecture, and performance metrics powering CardioCare's AI engine.
           </p>
         </div>
       </div>
 
       {/* Quick Stats Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {[
           { icon: FaDatabase, label: "Dataset Size", value: "70,000 Samples", sub: "Cardio Train Dataset" },
           { icon: FaBrain, label: "Model Type", value: "XGBoost Classifier", sub: "Gradient Boosting" },
           { icon: FaClipboardCheck, label: "Accuracy", value: "~73%", sub: "Test Set" },
-          { icon: FaHeartbeat, label: "Features", value: "12 Inputs", sub: "Clinical & Vitals" },
+          { icon: FaHeartbeat, label: "Features", value: "10 Inputs", sub: "Clinical & Vitals" },
         ].map((stat, i) => (
-          <div key={i} className="rounded-2xl border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+          <div key={i} className="rounded-2xl border bg-card p-4 md:p-6 shadow-sm transition-all hover:shadow-md">
             <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 p-3 text-primary">
               <stat.icon className="h-6 w-6" />
             </div>
@@ -42,7 +42,7 @@ function TechnicalDetails() {
         ))}
       </div>
 
-      <div className="mt-20 grid gap-12 lg:grid-cols-2">
+      <div className="mt-10 md:mt-20 grid gap-8 md:gap-12 lg:grid-cols-2">
         {/* Dataset Section */}
         <section className="space-y-6">
           <div className="space-y-2">

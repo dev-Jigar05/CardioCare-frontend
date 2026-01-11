@@ -26,7 +26,7 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Analytics />
+      <Analytics debug={false} />
     </BrowserRouter>
   )
 }

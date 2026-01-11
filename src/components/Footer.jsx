@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -43,13 +43,22 @@ function Footer() {
           <h3 className="font-semibold text-foreground">Connect</h3>
           <div className="flex flex-col space-y-4">
              <a 
-                href="https://github.com" 
+                href="https://github.com/dev-Jigar05/CardioCare-frontend" 
                 target="_blank" 
                 rel="noreferrer"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
              >
                 <FaGithub className="h-4 w-4" />
                 <span>View on GitHub</span>
+             </a>
+             <a 
+                href="https://www.linkedin.com/in/jigarvadukar/" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+             >
+                <FaLinkedin className="h-4 w-4" />
+                <span>Connect on LinkedIn</span>
              </a>
              <p className="text-sm text-muted-foreground/80">
                 &copy; {new Date().getFullYear()} CardioCare Project. <br />

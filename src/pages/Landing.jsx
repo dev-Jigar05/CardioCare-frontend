@@ -18,7 +18,7 @@ function Landing() {
             {[
               { label: "Patient Records", value: "70k+" },
               { label: "Accuracy Rate", value: "~73%" },
-              { label: "Risk Factors", value: "12" },
+              { label: "Risk Factors", value: "10" },
             ].map((stat, i) => (
               <div key={i} className="space-y-2 rounded-xl border border-transparent bg-background/50 p-6 shadow-sm transition-all duration-300 hover:border-primary/50 hover:shadow-md hover:-translate-y-1">
                 <p className="text-3xl md:text-4xl font-bold text-primary">{stat.value}</p>

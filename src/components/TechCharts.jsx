@@ -34,7 +34,7 @@ export const AgeDistributionChart = () => {
   ];
 
   return (
-    <ChartContainer config={ageChartConfig} className="h-[300px] w-full">
+    <ChartContainer config={ageChartConfig} className="aspect-auto h-[300px] w-full">
       <BarChart accessibilityLayer data={data}>
         <CartesianGrid vertical={false} />
         <XAxis
@@ -75,7 +75,7 @@ export const TargetDistributionChart = () => {
   ];
 
   return (
-    <ChartContainer config={targetChartConfig} className="mx-auto aspect-square max-h-[300px]">
+    <ChartContainer config={targetChartConfig} className="mx-auto aspect-auto h-[350px] w-full">
       <PieChart>
         <Pie
           data={data}
@@ -142,7 +142,7 @@ export const FeatureImportanceChart = () => {
   ];
 
   return (
-    <ChartContainer config={featureChartConfig} className="h-[350px] w-full">
+    <ChartContainer config={featureChartConfig} className="aspect-auto h-[400px] md:h-[350px] w-full">
       <BarChart
         accessibilityLayer
         data={data}
@@ -157,7 +157,7 @@ export const FeatureImportanceChart = () => {
           tickLine={false}
           tickMargin={10}
           axisLine={false}
-          width={100}
+          width={80}
         />
         <ChartTooltip content={<ChartTooltipContent hideLabel />} />
         <Bar dataKey="value" fill="var(--color-value)" radius={[0, 4, 4, 0]} barSize={32} />
@@ -183,7 +183,7 @@ export const ModelComparisonChart = () => {
   ];
 
   return (
-    <ChartContainer config={modelComparisonConfig} className="h-[300px] w-full">
+    <ChartContainer config={modelComparisonConfig} className="aspect-auto h-[400px] md:h-[300px] w-full">
       <BarChart accessibilityLayer data={data} layout="vertical" margin={{ left: 0, right: 30 }}>
         <CartesianGrid horizontal={false} />
         <XAxis type="number" domain={[65, 75]} hide />
@@ -193,7 +193,7 @@ export const ModelComparisonChart = () => {
           tickLine={false}
           tickMargin={10}
           axisLine={false}
-          width={100}
+          width={80}
         />
         <ChartTooltip
           cursor={false}
